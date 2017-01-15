@@ -5,6 +5,10 @@
     <meta charset="utf-8">
     <title>ゆいまーる 予定登録</title>
 
+    <!--キャッシュさせない-->
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+
     <!-- Vue -->
     <script src="https://unpkg.com/vue/dist/vue.js"></script>
     <!-- Firebase -->
@@ -30,13 +34,6 @@
             padding-left: 10px
         }
     </style>
-
-    <script>
-        window.onload = function() {
-        // ボタンとモーダルを関連付ける
-        $('.modal-trigger').leanModal();
-        };
-    </script>
 </head>
 
 <body>
@@ -52,41 +49,45 @@
         </div>
     </nav>
 
-    <div class="fixed-action-btn">
-        <a class="btn-floating btn-large red">
-            <i class="large material-icons">add</i>
+    <!--Avatar Content-->
+    <div id="events" class="collection">
+        <a href="#!" class="collection-item" v-for="item in anArray">
+            {{ item.date }}
+            {{ item.title }}
+            {{ item.comment }}
         </a>
-        <ul>
-            <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
-            <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
-            <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
-            <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
-        </ul>
     </div>
 
-    <!-- Modal Trigger -->
-    <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
-
-    <!-- Modal Structure -->
-    <div id="modal1" class="modal">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
-    </div>
-
-    <button data-target="modal-demo" class="btn modal-trigger">Modal</button>
-    <div id="modal-demo" class="modal">
-        <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-        </div>
+    <!--登録-->
+    <div id="event-insert">
+        <h2>予定登録</h2>
+        <form class="col scv gv12">
+            <div class="row">
+                <div class="input-field col s6">
+                    <!--<i class="material-icons prefix">account_circle</i>-->
+                    <input v-model="date" id="date" type="text" class="validate">
+                    <label class="active" for="name">日時</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <!--<i class="material-icons prefix">insert_photo</i>-->
+                    <input v-model="title" id="image" type="text">
+                    <label class="active" for="title">タイトル</label>
+                </div>
+            </div>
+            <div class="row">
+                <div class="input-field col s6">
+                    <!--<i class="material-icons prefix">textsms</i>-->
+                    <input v-model="comment" id="image" type="text">
+                    <label class="active" for="comment">コメント</label>
+                </div>
+            </div>
+        </form>
+        <button @click="addEvent" class="btn waves-effect waves-light" type="submit" name="action">
+            登録
+            <!--<i class="material-icons right">send</i>-->
+        </button>
     </div>
 
     <script src="js/app.js"></script>

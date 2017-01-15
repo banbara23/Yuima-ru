@@ -32,7 +32,7 @@ var vm = new Vue({
 
 // メンバー登録
 var vueClick = new Vue({
-    el: '#insert',
+    el: '#member-insert',
     data: {
         name: '',
         imageUrl: '',
@@ -46,6 +46,35 @@ var vueClick = new Vue({
             this.$firebaseRefs.members.push({
                 name: this.name,
                 imageUrl: this.imageUrl,
+                comment: this.comment
+            })
+        }
+    }
+})
+
+var vueReadEvent = new Vue({
+    el: '#events',
+    firebase: {
+        anArray: db.ref('events')
+    }
+})
+
+// メンバー登録
+var vueWriteEvent = new Vue({
+    el: '#event-insert',
+    data: {
+        date: '',
+        title: '',
+        comment: ''
+    },
+    firebase: {
+        members: db.ref('events')
+    },
+    methods: {
+        addEvent: function() {
+            this.$firebaseRefs.members.push({
+                date: this.date,
+                title: this.title,
                 comment: this.comment
             })
         }
