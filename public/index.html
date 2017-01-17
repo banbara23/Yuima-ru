@@ -37,9 +37,10 @@
   <!--ナビゲーション-->
   <nav>
     <div class="nav-wrapper">
-      <a href="#" class="brand-logo">ゆいまーる</a>
+      <a href="index.html" class="brand-logo">ゆいまーる</a>
       <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="event.html">予定登録</a></li>
+        <li><a href="schedule.html">出席登録</a></li>
+        <li><a href="event.html">予定追加</a></li>
         <li><a href="member.html">メンバー</a></li>
       </ul>
     </div>
@@ -47,7 +48,7 @@
 
   <div class="row" id="events">
     <div class="col s12" v-for="events in anArray">
-      <a href="#!">
+      <a href="event.html?id={{events.date}}">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">
