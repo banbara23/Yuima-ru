@@ -11,6 +11,8 @@
   <script src="https://gstatic.com/firebasejs/3.5.2/firebase.js"></script>
   <!-- VueFire -->
   <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+  <!--vue-router-->
+  <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
   <!--materialize-->
   <!--Import Google Icon Font-->
@@ -45,6 +47,10 @@
       </ul>
     </div>
   </nav>
+
+<div id="example">
+  <my-component></my-component>
+</div>
 
   <div class="row" id="events" v-cloak>
     <div class="col s12" v-for="events in anArray">

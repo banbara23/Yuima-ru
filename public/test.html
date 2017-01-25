@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ゆいまーる</title>
+
+  <!-- Vue -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+
+  </head>
+
+<body>
+<div id="example">
+  <my-component></my-component>
+</div>
+<script>
+// 登録する
+Vue.component('my-component', {
+  template: '<div>A custom component!</div>'
+})
+// root インスタンスを作成する
+new Vue({
+  el: '#example'
+})
+</script>
+
+</body>
+</html>

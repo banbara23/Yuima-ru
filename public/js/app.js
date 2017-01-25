@@ -16,3 +16,13 @@ var vueReadEvent = new Vue({
         anArray: db.ref('events')
     }
 })
+
+
+// 登録する
+Vue.component('navi-component', {
+  template: '<div>A custom component!</div>'
+})
+// root インスタンスを作成する
+new Vue({
+  el: '#navi'
+})
