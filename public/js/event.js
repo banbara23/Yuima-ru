@@ -30,7 +30,7 @@ var vueWriteEvent = new Vue({
   },
   methods: {
     addEvent: function() {
-      this.$firebaseRefs.members.push('', {
+      this.$firebaseRefs.members.push({
         date: this.date,
         title: this.title,
         comment: this.comment
