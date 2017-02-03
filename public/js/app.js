@@ -1,28 +1,34 @@
 // Initialize Firebase
 var config = {
-    apiKey: "AIzaSyA0guptgPg4DYx7897UCNRZj9ltDBjLCw8",
-    authDomain: "yuima-ru.firebaseapp.com",
-    databaseURL: "https://yuima-ru.firebaseio.com",
-    storageBucket: "yuima-ru.appspot.com",
-    messagingSenderId: "496769769191"
+  apiKey: "AIzaSyA0guptgPg4DYx7897UCNRZj9ltDBjLCw8",
+  authDomain: "yuima-ru.firebaseapp.com",
+  databaseURL: "https://yuima-ru.firebaseio.com",
+  storageBucket: "yuima-ru.appspot.com",
+  messagingSenderId: "496769769191"
 };
 firebase.initializeApp(config);
-
 var db = firebase.database()
+var eventList = new Array();
 
-var vueReadEvent = new Vue({
-    el: '#events',
-    firebase: {
-        anArray: db.ref('events')
-    }
-})
+//firebaseに接続して予定一覧を取得し、aタグ用のlinkを作る
+db.ref('events')
+  .on('value', function(snapshot) {
+    snapshot.forEach(function(child) {
+      var val = child.val();
+      var event = {
+        date: val.date,
+        comment: val.comment,
+        title: val.title,
+        link: 'event.html?id=' + child.key
+      }
+      eventList.push(event);
+    })
+    console.log(eventList);
+  });
 
-
-// 登録する
-Vue.component('navi-component', {
-  template: '<div>A custom component!</div>'
-})
-// root インスタンスを作成する
 new Vue({
-  el: '#navi'
+  el: '#events',
+  data: {
+    anArray: eventList
+  }
 })
