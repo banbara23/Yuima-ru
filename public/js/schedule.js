@@ -25,16 +25,11 @@ var config = {
   messagingSenderId: "496769769191"
 };
 firebase.initializeApp(config);
-
 var db = firebase.database()
-var vueReadEvent = new Vue({
-  el: '#schedule',
-  firebase: {
-    anArray: db.ref('events')
-  }
-})
-var members;
-db.ref('memvers')
+
+//firebaseに接続して予定一覧を取得し、aタグ用のlinkを作る
+var eventList = new Array();
+db.ref('events')
   .on('value', function(snapshot) {
     snapshot.forEach(function(child) {
       var val = child.val();
@@ -44,11 +39,32 @@ db.ref('memvers')
         title: val.title,
         link: 'event.html?id=' + child.key
       }
-      members = {
-        key: child.key,
-        name: child.name
-      }
+      eventList.push(event);
     })
-
-    console.log(snapshot);
+    console.log(eventList);
   });
+
+new Vue({
+    el: '#schedule',
+    data: {
+      anArray: eventList
+    }
+  })
+  // var members;
+  // db.ref('members')
+  //   .on('value', function(snapshot) {
+  //     snapshot.forEach(function(child) {
+  //       var val = child.val();
+  //       var event = {
+  //         date: val.date,
+  //         comment: val.comment,
+  //         title: val.title,
+  //         link: 'event.html?id=' + child.key
+  //       }
+  //       members = {
+  //         key: child.key,
+  //         name: child.name
+  //       }
+  //     })
+  //     console.log(snapshot);
+  //   });
