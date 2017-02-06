@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>ゆいまーる</title>
+
+  <!-- Vue -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- Firebase -->
+  <script src="https://gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+  <!-- VueFire -->
+  <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+
+  <!--materialize-->
+  <!--Import Google Icon Font-->
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.css" media="screen,projection" />
+
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!--jquery-->
+  <!--<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>-->
+
+  <style>
+    nav {
+      padding-left: 10px
+    }
+    
+    main {
+      padding-top: 8px
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <header>
+    <!--ナビゲーション-->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">ゆいまーる</a>
+        <ul id="nav-mobile" class="right">
+          <li><a href="schedule.html">出席登録</a></li>
+          <li><a href="event.html">予定追加</a></li>
+          <li><a href="member.html">メンバー</a></li>
+        </ul>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <div class="container">
+        <h3 id="schedule" class="header teal-text text-lighten-2">{{ date }}</3>
+          <h3 class="header teal-text text-lighten-2">schedule title</h3>
+          <div class="row center">
+            <h5 class="header col s12 light">comment</h5>
+          </div>
+          <div class="row center">
+            <a id="download-button" class="btn-large waves-effect waves-light teal lighten-1">参加？</a>
+          </div>
+          <br>
+      </div>
+    </section>
+  </main>
+
+  <footer></footer>
+  <script src="js/schedule_detail.js"></script>
+</body>
+
+</html>
