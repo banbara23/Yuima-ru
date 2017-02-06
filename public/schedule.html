@@ -29,7 +29,7 @@
       padding-left: 10px
     }
     
-    div.row {
+    main {
       padding-top: 8px
     }
   </style>
@@ -38,53 +38,41 @@
 
 <body>
 
-  <!--ナビゲーション-->
-  <nav>
-    <div class="nav-wrapper">
-      <a href="index.html" class="brand-logo">ゆいまーる</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="schedule.html">出席登録</a></li>
-        <li><a href="event.html">予定追加</a></li>
-        <li><a href="member.html">メンバー</a></li>
-      </ul>
-    </div>
-  </nav>
-
-  <!--<div class="row" id="schedule">
-    <div class="col s12" v-for="items in anArray">
-
-      <div class="card blue-grey darken-1">
-        <div class="card-content white-text">
-          <span class="card-title">
-            {{ items.date }}
-            {{ items.title }}
-            </span>
-          <p>{{ items.comment }}</p>
-        </div>
+  <header>
+    <!--ナビゲーション-->
+    <nav>
+      <div class="nav-wrapper">
+        <a href="index.html" class="brand-logo">ゆいまーる</a>
+        <ul id="nav-mobile" class="right hide-on-med-and-down">
+          <li><a href="schedule.html">出席登録</a></li>
+          <li><a href="event.html">予定追加</a></li>
+          <li><a href="member.html">メンバー</a></li>
+        </ul>
       </div>
+    </nav>
+  </header>
 
-    </div>
-  </div>-->
-
-  <!--予定一覧-->
-  <div class="row" id="schedule" v-cloak>
-    <div class="col s12" v-for="events in anArray">
-      <a :href=events.link>
-        <div class="card blue-grey darken-1">
-          <div class="card-content white-text">
-            <span class="card-title">
+  <main>
+    <!--予定一覧-->
+    <div class="row" id="schedule" v-cloak>
+      <div class="col s12" v-for="events in anArray">
+        <a :href=events.link>
+          <div class="card blue-grey darken-1">
+            <div class="card-content white-text">
+              <span class="card-title">
               {{ events.date }}
               {{ events.title }}
             </span>
-            <p>{{ events.comment }}</p>
+              <p>{{ events.comment }}</p>
+            </div>
           </div>
-        </div>
-      </a>
+        </a>
+      </div>
     </div>
-  </div>
+  </main>
 
+  <footer></footer>
   <script src="js/schedule.js"></script>
-
 </body>
 
 </html>

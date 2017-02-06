@@ -1,3 +1,13 @@
+// urlからパラメータを取得
+var urlParam = location.search.substring(1);
+var param = urlParam.split('&');
+var paramArray = [];
+for (i = 0; i < param.length; i++) {
+  var paramItem = param[i].split('=');
+  paramArray[paramItem[0]] = paramItem[1];
+}
+console.log(paramArray)
+
 // Initialize Firebase
 var config = {
   apiKey: "AIzaSyA0guptgPg4DYx7897UCNRZj9ltDBjLCw8",

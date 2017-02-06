@@ -37,7 +37,7 @@ db.ref('events')
         date: val.date,
         comment: val.comment,
         title: val.title,
-        link: 'event.html?id=' + child.key
+        link: 'schedule_detail.html?id=' + child.key
       }
       eventList.push(event);
     })
@@ -45,26 +45,8 @@ db.ref('events')
   });
 
 new Vue({
-    el: '#schedule',
-    data: {
-      anArray: eventList
-    }
-  })
-  // var members;
-  // db.ref('members')
-  //   .on('value', function(snapshot) {
-  //     snapshot.forEach(function(child) {
-  //       var val = child.val();
-  //       var event = {
-  //         date: val.date,
-  //         comment: val.comment,
-  //         title: val.title,
-  //         link: 'event.html?id=' + child.key
-  //       }
-  //       members = {
-  //         key: child.key,
-  //         name: child.name
-  //       }
-  //     })
-  //     console.log(snapshot);
-  //   });
+  el: '#schedule',
+  data: {
+    anArray: eventList
+  }
+})
