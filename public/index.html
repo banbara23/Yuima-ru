@@ -5,15 +5,6 @@
   <meta charset="utf-8">
   <title>ゆいまーる</title>
 
-  <!-- Vue -->
-  <script src="https://unpkg.com/vue/dist/vue.js"></script>
-  <!-- Firebase -->
-  <script src="https://gstatic.com/firebasejs/3.5.2/firebase.js"></script>
-  <!-- VueFire -->
-  <!--<script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>-->
-  <!--vue-router-->
-  <!--<script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>-->
-
   <!--materialize-->
   <!--Import Google Icon Font-->
   <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -44,7 +35,7 @@
   <nav>
     <div class="nav-wrapper">
       <a href="index.html" class="brand-logo">ゆいまーる</a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <ul id="nav-mobile" class="right">
         <li><a href="schedule.html">出席登録</a></li>
         <li><a href="event.html">予定追加</a></li>
         <li><a href="member.html">メンバー</a></li>
@@ -52,24 +43,51 @@
     </div>
   </nav>
 
-  <!--予定一覧-->
+  <!-- メニュー -->
   <div class="row" id="events" v-cloak>
-    <div class="col s12" v-for="events in anArray">
-      <a :href=events.link>
+
+    <!--出席簿-->
+    <div class="col s12">
+      <a href="schedule.html">
         <div class="card blue-grey darken-1">
           <div class="card-content white-text">
             <span class="card-title">
-              {{ events.date }}
-              {{ events.title }}
+              出席登録
             </span>
-            <p>{{ events.comment }}</p>
+            <p>練習への参加登録はこちら</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!--メンバー-->
+    <div class="col s12">
+      <a href="schedule.html">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">
+              メンバー
+            </span>
+            <p>ゆかいな仲間たち</p>
+          </div>
+        </div>
+      </a>
+    </div>
+
+    <!--部費-->
+    <div class="col s12">
+      <a href="schedule.html">
+        <div class="card blue-grey darken-1">
+          <div class="card-content white-text">
+            <span class="card-title">
+              部費
+            </span>
+            <p>(￥v￥)</p>
           </div>
         </div>
       </a>
     </div>
   </div>
-
-  <script src="js/index.js"></script>
 
 </body>
 
