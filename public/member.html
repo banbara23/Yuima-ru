@@ -2,90 +2,90 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <title>ゆいまーる メンバー</title>
+  <meta charset="utf-8">
+  <title>ゆいまーる メンバー</title>
 
-    <!-- Vue -->
-    <script src="https://unpkg.com/vue/dist/vue.js"></script>
-    <!-- Firebase -->
-    <script src="https://gstatic.com/firebasejs/3.5.2/firebase.js"></script>
-    <!-- VueFire -->
-    <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
+  <!-- Vue -->
+  <script src="https://unpkg.com/vue/dist/vue.js"></script>
+  <!-- Firebase -->
+  <script src="https://gstatic.com/firebasejs/3.5.2/firebase.js"></script>
+  <!-- VueFire -->
+  <script src="https://unpkg.com/vuefire/dist/vuefire.js"></script>
 
-    <!--materialize-->
-    <!--Import Google Icon Font-->
-    <!--<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
-    <!--Import materialize.css-->
-    <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
+  <!--materialize-->
+  <!--Import Google Icon Font-->
+  <!--<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">-->
+  <!--Import materialize.css-->
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css" media="screen,projection" />
 
-    <!--Let browser know website is optimized for mobile-->
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--Let browser know website is optimized for mobile-->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--jquery-->
-    <!--<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>-->
+  <!--jquery-->
+  <!--<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>-->
 
-    <style>
-        nav {
-            padding-left: 10px
-        }
-        
-        ul.collection {
-            margin: 10px
-        }
-    </style>
+  <style>
+    nav {
+      padding-left: 10px
+    }
+    
+    ul.collection {
+      margin: 10px
+    }
+  </style>
 </head>
 
 <body>
-    <!--ナビゲーション-->
-    <nav>
-        <div class="nav-wrapper">
-            <a href="index.html" class="brand-logo">ゆいまーる</a>
-            <ul id="nav-mobile" class="right hide-on-med-and-down">
-                <li><a href="schedule.html">出席登録</a></li>
-                <li><a href="event.html">予定追加</a></li>
-                <li><a href="member.html">メンバー</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <!--Avatar Content-->
-    <div id="member-list" class="collection" v-cloak>
-        <a href="#!" class="collection-item" v-for="item in anArray">
-            {{ item.name }}
-        </a>
+  <!--ナビゲーション-->
+  <nav>
+    <div class="nav-wrapper">
+      <a href="index.html" class="brand-logo">ゆいまーる</a>
+      <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="schedule.html">出席登録</a></li>
+        <li><a href="event.html">予定追加</a></li>
+        <li><a href="member.html">メンバー</a></li>
+      </ul>
     </div>
+  </nav>
 
-    <!--登録-->
-    <div id="member-insert">
-        <h2>メンバー登録</h2>
-        <form class="col scv gv12">
-            <div class="row">
-                <div class="input-field col s6">
-                    <!--<i class="material-icons prefix">account_circle</i>-->
-                    <input v-model="name" id="name" type="text" class="validate">
-                    <label class="active" for="name">名前</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s6">
-                    <!--<i class="material-icons prefix">insert_photo</i>-->
-                    <input v-model="imageUrl" id="image" type="text">
-                    <label class="active" for="image">画像</label>
-                </div>
-            </div>
-            <div class="row">
-                <div class="input-field col s12">
-                    <!--<i class="material-icons prefix">textsms</i>-->
-                    <textarea v-model="comment" id="comment" class="materialize-textarea"></textarea>
-                    <label class="active" for="comment">コメント</label>
-                </div>
-            </div>
-        </form>
-        <button @click="addItem" class="btn waves-effect waves-light" type="submit" name="action">
+  <!--Avatar Content-->
+  <div id="member-list" class="collection" v-cloak>
+    <a :href=item.link class="collection-item" v-for="item in anArray">
+      {{ item.name }}
+    </a>
+  </div>
+
+  <!--登録-->
+  <div id="member-insert">
+    <h5>メンバー登録</h5>
+    <form class="col scv gv12">
+      <div class="row">
+        <div class="input-field col s6">
+          <!--<i class="material-icons prefix">account_circle</i>-->
+          <input v-model="name" id="name" type="text" class="validate">
+          <label class="active" for="name">名前</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s6">
+          <!--<i class="material-icons prefix">insert_photo</i>-->
+          <input v-model="imageUrl" id="image" type="text">
+          <label class="active" for="image">画像</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="input-field col s12">
+          <!--<i class="material-icons prefix">textsms</i>-->
+          <textarea v-model="comment" id="comment" class="materialize-textarea"></textarea>
+          <label class="active" for="comment">コメント</label>
+        </div>
+      </div>
+    </form>
+    <button @click="addItem" class="btn waves-effect waves-light" type="submit" name="action">
             Submit
             <!--<i class="material-icons right">send</i>-->
         </button>
-    </div>
+  </div>
 
 </body>
 <script src="js/member.js"></script>
