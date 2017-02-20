@@ -61,17 +61,20 @@
           <h4>commen:{{comment}}</h4>
         </div>
         <div class="row center">
-          <a id="download-button" class="btn-large waves-effect waves-light teal lighten-1">参加？</a>
+          <a @click="addItem" id="download-button" class="btn-large waves-effect waves-light teal lighten-1">参加？</a>
         </div>
         <br>
       </div>
-    </section>
-    <!--members-->
-    <div id="members" class="collection" v-cloak>
-      <a :href=item.link class="collection-item" v-for="item in anArray">
+
+      <!--members-->
+      <div id="members" class="collection" v-cloak>
+        <a :href=item.link class="collection-item" v-for="item in anArray">
           {{ item.name }}
         </a>
-    </div>
+      </div>
+    </section>
+
+
   </main>
 
   <footer></footer>

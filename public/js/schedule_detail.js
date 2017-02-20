@@ -29,19 +29,30 @@ var db = firebase.database()
 
 //   });
 
-var vm1 = new Vue({
+var vm = new Vue({
   el: '#schedule',
   data: {
     date: '??/??',
     title: 'title',
-    comment: 'comment'
-  }
-})
-
-var vm = new Vue({
-  el: '#members',
-  data: {
-    anArray: members
+    comment: 'comment',
+    anArray: []
+  },
+  firebase: {
+    schedules: db.ref('schedules')
+  },
+  methods: {
+    addItem: function() {
+      this.$firebaseRefs
+        .schedules
+        .child(params.id)
+        .child('members')
+        .child('-KaSWnt3b9PSCU4o0Laa')
+        .set({
+          status: 'ok',
+          comment: 'いきます',
+          updateDateTime: getCurrentTime()
+        })
+    }
   }
 })
 
@@ -49,9 +60,10 @@ var vm = new Vue({
 db.ref('events/' + params.id)
   .on('value', function(snapshot) {
     var val = snapshot.val();
-    vm1.title = val.title;
-    vm1.date = val.date;
-    vm1.comment = val.comment;
+    vm.title = val.title;
+    vm.date = val.date;
+    vm.comment = val.comment;
+    vm.anArray = getMembers();
     console.log(val);
   });
 
@@ -89,3 +101,23 @@ function getMembers() {
     });
   return members;
 };
+
+//現在時刻取得（yyyy/mm/dd hh:mm:ss）
+function getCurrentTime() {
+  var now = new Date();
+  var res = "" + now.getFullYear() + "/" + padZero(now.getMonth() + 1) +
+    "/" + padZero(now.getDate()) + " " + padZero(now.getHours()) + ":" +
+    padZero(now.getMinutes()) + ":" + padZero(now.getSeconds());
+  return res;
+}
+
+//先頭ゼロ付加
+function padZero(num) {
+  var result;
+  if (num < 10) {
+    result = "0" + num;
+  } else {
+    result = "" + num;
+  }
+  return result;
+}
