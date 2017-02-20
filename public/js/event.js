@@ -26,15 +26,23 @@ var vueWriteEvent = new Vue({
     comment: ''
   },
   firebase: {
-    members: db.ref('events')
+    events: db.ref('events')
   },
   methods: {
     addEvent: function() {
-      this.$firebaseRefs.members.push({
+      // 予定一覧に登録
+      var newEventKey = this.$firebaseRefs.events.push({
         date: this.date,
         title: this.title,
         comment: this.comment
-      })
+      }).key
+
+      // 出欠一覧に登録
+      db.ref('schedules/' + newEventKey).set({
+        members: {},
+        createDatetime: Date.now(),
+        updateDatetime: Date.now()
+      });
     }
   }
 })
