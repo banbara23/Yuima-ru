@@ -29,7 +29,7 @@ var db = firebase.database()
 
 //   });
 
-var vm = new Vue({
+var vm1 = new Vue({
   el: '#schedule',
   data: {
     date: '??/??',
@@ -49,8 +49,30 @@ var vm = new Vue({
 db.ref('events/' + params.id)
   .on('value', function(snapshot) {
     var val = snapshot.val();
-    vm.title = val.title;
-    vm.date = val.date;
-    vm.comment = val.comment;
+    vm1.title = val.title;
+    vm1.date = val.date;
+    vm1.comment = val.comment;
     console.log(val);
   });
+
+var members = new Array();
+db.ref('members')
+  .on('value', function(snapshot) {
+    snapshot.forEach(function(child) {
+      var val = child.val();
+      var member = {
+        key: child.key,
+        name: val.name,
+        comment: val.comment
+      }
+      members.push(member);
+    })
+    console.log(members);
+  });
+
+var vm = new Vue({
+  el: '#members',
+  data: {
+    anArray: members
+  }
+})

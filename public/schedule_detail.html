@@ -66,10 +66,12 @@
         <br>
       </div>
     </section>
-    <member>
-      <div class="col s12" v-for="events in anArray">
-      </div>
-    </member>
+    <!--members-->
+    <div id="members" class="collection" v-cloak>
+      <a :href=item.link class="collection-item" v-for="item in anArray">
+          {{ item.name }}
+        </a>
+    </div>
   </main>
 
   <footer></footer>
