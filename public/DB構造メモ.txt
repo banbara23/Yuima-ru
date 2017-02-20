@@ -1,0 +1,48 @@
+events:     予定
+members:    メンバー一覧
+shedules:   出欠一覧
+
+root
+    events
+        key-e1-xxxxxxxxxx
+            date: 2017/04/06
+            time: 10-14
+            title: 春日小で練習
+            comment: 新人くるかも
+        key-e2-xxxxxxxxxx
+            date: 2017/04/18
+            time: 10-14
+            title: 春日小で練習
+            comment: ？？チームがくるので練習試合
+    members
+        key-m1-xxxxxxxxxx
+            name: もじゃ
+            comment: 休止中
+            thumbnail: http...
+        key-m2-xxxxxxxxxx
+            name: ゆうた
+            comment: キャプテン
+            thumbnail:
+    schedules
+        key-s１-xxxxxxxxxx
+            eventKey: key-１-xxxxxxxxxx
+            members
+                key-１-xxxxxxxxxx
+                    name: もじゃ
+                    status: ok
+                    comment: 行きます
+                key-2-xxxxxxxxxx
+                    name: ゆうた
+                    status: ng
+                    comment: 無理です
+        key-s2-xxxxxxxxxx
+            eventKey: key-１-xxxxxxxxxx
+            members
+                key-１-xxxxxxxxxx
+                    name: もじゃ
+                    status: ok
+                    comment: 行きます
+                key-2-xxxxxxxxxx
+                    name: ゆうた
+                    status: ng
+                    comment: 無理です
