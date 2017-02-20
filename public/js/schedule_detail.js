@@ -36,16 +36,16 @@ var vm1 = new Vue({
     title: 'title',
     comment: 'comment'
   }
-  // ,  firebase: {
-  //   anObject: {
-  //     source: db.ref('events/' + params.id),
-  //     cancelCallback: function() {
-  //       console.log('firebase get error')
-  //     }
-  //   }
-  // }
 })
 
+var vm = new Vue({
+  el: '#members',
+  data: {
+    anArray: members
+  }
+})
+
+// イベント取得
 db.ref('events/' + params.id)
   .on('value', function(snapshot) {
     var val = snapshot.val();
@@ -55,24 +55,37 @@ db.ref('events/' + params.id)
     console.log(val);
   });
 
-var members = new Array();
-db.ref('members')
+// 出席取得
+db.ref('schedules/' + params.id)
   .on('value', function(snapshot) {
-    snapshot.forEach(function(child) {
-      var val = child.val();
-      var member = {
-        key: child.key,
-        name: val.name,
-        comment: val.comment
-      }
-      members.push(member);
-    })
+    var schedules = snapshot.val();
+    var members;
+    // if ('members' in schedules) {
+    //   members = val.members;
+    //   // todo:メンバーの登録した出席状況を表示
+    // } else {
+    //   // 誰も出席登録していないので、メンバー一覧から取得して表示する
+    //   members = getMembers();
+    // }
+    members = getMembers();
+    vm.anArray = members;
     console.log(members);
   });
 
-var vm = new Vue({
-  el: '#members',
-  data: {
-    anArray: members
-  }
-})
+// メンバー一覧取得
+function getMembers() {
+  var members = new Array();
+  db.ref('members')
+    .on('value', function(snapshot) {
+      snapshot.forEach(function(child) {
+        var val = child.val();
+        var member = {
+          key: child.key,
+          name: val.name,
+          comment: val.comment
+        }
+        members.push(member);
+      })
+    });
+  return members;
+};
