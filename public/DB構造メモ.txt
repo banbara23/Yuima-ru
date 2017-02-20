@@ -24,7 +24,7 @@ root
             comment: キャプテン
             thumbnail:
     schedules
-        key-s１-xxxxxxxxxx
+        key-e1-xxxxxxxxxx (eventsと同じkey)
             eventKey: key-１-xxxxxxxxxx
             members
                 key-１-xxxxxxxxxx
@@ -35,7 +35,7 @@ root
                     name: ゆうた
                     status: ng
                     comment: 無理です
-        key-s2-xxxxxxxxxx
+        key-e2-xxxxxxxxxx
             eventKey: key-１-xxxxxxxxxx
             members
                 key-１-xxxxxxxxxx
