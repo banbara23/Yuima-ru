@@ -53,19 +53,23 @@
   </header>
 
   <main>
-    <section>
+    <section id="schedule">
       <div class="container">
-        <h3 id="schedule" class="header teal-text text-lighten-2">{{ date }}</3>
-          <h3 class="header teal-text text-lighten-2">schedule title</h3>
-          <div class="row center">
-            <h5 class="header col s12 light">comment</h5>
-          </div>
-          <div class="row center">
-            <a id="download-button" class="btn-large waves-effect waves-light teal lighten-1">参加？</a>
-          </div>
-          <br>
+        <h3 class="header teal-text text-lighten-2">日付: {{ date }}</h3>
+        <h3 class="header teal-text text-lighten-2">タイトル: {{ title }}</h3>
+        <div class="row center">
+          <h4>commen:{{comment}}</h4>
+        </div>
+        <div class="row center">
+          <a id="download-button" class="btn-large waves-effect waves-light teal lighten-1">参加？</a>
+        </div>
+        <br>
       </div>
     </section>
+    <member>
+      <div class="col s12" v-for="events in anArray">
+      </div>
+    </member>
   </main>
 
   <footer></footer>

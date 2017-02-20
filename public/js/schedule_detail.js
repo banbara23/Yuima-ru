@@ -29,19 +29,28 @@ var db = firebase.database()
 
 //   });
 
-new Vue({
+var vm = new Vue({
   el: '#schedule',
   data: {
-    date: '???',
-    value: 'value',
+    date: '??/??',
+    title: 'title',
     comment: 'comment'
-  },
-  firebase: {
-    anObject: {
-      source: db.ref('events/' + params.id),
-      cancelCallback: function() {
-        console.log('firebase get error')
-      }
-    }
   }
+  // ,  firebase: {
+  //   anObject: {
+  //     source: db.ref('events/' + params.id),
+  //     cancelCallback: function() {
+  //       console.log('firebase get error')
+  //     }
+  //   }
+  // }
 })
+
+db.ref('events/' + params.id)
+  .on('value', function(snapshot) {
+    var val = snapshot.val();
+    vm.title = val.title;
+    vm.date = val.date;
+    vm.comment = val.comment;
+    console.log(val);
+  });
